@@ -1,22 +1,17 @@
-$(document).ready(function() {
-  $("#formOne").submit(function(event) {
+$(document).ready(function () {
+  $("#formOne").submit(function (event) {
     event.preventDefault();
-    const person1Input = $("input#person1").val();
-    const person2Input = $("input#person2").val();
-    const animalInput = $("input#animal").val();
-    const exclamationInput = $("input#exclamation").val();
-    const verbInput = $("input#verb").val();
-    const nounInput = $("input#noun").val();
+    inputs = $("input").toArray();
+    outputs = $("span").toArray();
 
-    $(".person1").text(person1Input);
-    $(".person2").text(person2Input);
-    $(".animal").text(animalInput);
-    $(".exclamation").text(exclamationInput);
-    $(".verb").text(verbInput);
-    $(".noun").text(nounInput);
-    
-    $("button").click(function() {
-      $("#story").show();
+    let loopCount = 0;
+    inputs.forEach(function(input) {
+      outputs[loopCount].prepend(input.value);
+      loopCount += 1;
     });
+
+    $("#story").show();
+    $(this).hide();
+
   });
 });
